@@ -1,0 +1,31 @@
+html { 
+	box-sizing: border-box;
+}
+  
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	padding: 0;
+}
+  
+
+
+:root {
+  font-family: Arimo, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  --background-dark: rgba(210, 187, 239, 0.7);
+  --background-light: rgba(210, 187, 239, 0.26);
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}

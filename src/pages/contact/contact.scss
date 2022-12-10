@@ -1,0 +1,409 @@
+.contact_page {
+    width: 100vw;
+    height: 100%;
+    margin-bottom: 5rem;
+    overflow-x: hidden;
+    margin-top: 80px;
+}
+
+.top_wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+$glitch_color: var(--background-dark);
+
+.header_text {
+    flex: 1;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @mixin glitchCopy {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .glitch {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+
+        position: relative;
+        font-size: 4em;
+        letter-spacing: 0.3em;
+        -webkit-animation: tracking-in-expand 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+        animation: tracking-in-expand 1s cubic-bezier(0.215, 0.61, 0.355, 1) both, glitch-skew 1s infinite linear alternate-reverse;
+
+        &::before {
+            @include glitchCopy;
+            left: 2px;
+            text-shadow: -2px 0 $glitch_color;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        &::after {
+            @include glitchCopy;
+            left: -2px;
+            text-shadow: -2px 0 $glitch_color, 2px 2px $glitch_color;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+    }
+}
+
+
+
+@-webkit-keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes glitch-anim {
+    $steps: 20;
+
+    @for $i from 0 to $steps {
+        #{percentage($i*(calc(1/$steps)))} {
+            clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+            transform: skew((calc(random(100) / 100)) + deg);
+        }
+    }
+}
+
+@keyframes glitch-anim2 {
+    $steps: 20;
+
+    @for $i from 0 to $steps {
+        #{percentage($i*(calc(1/$steps)))} {
+            clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+            transform: skew((calc(random(100) / 100)) + deg);
+        }
+    }
+}
+
+@keyframes glitch-skew {
+    $steps: 10;
+
+    @for $i from 0 to $steps {
+        #{percentage($i*(calc(1/$steps)))} {
+            transform: skew((random(10) - 5) + deg);
+        }
+    }
+}
+
+.header_text.first {
+    justify-content: flex-start;
+    padding-left: 1rem;
+}
+
+.header_text.second {
+    justify-content: flex-end;
+}
+
+
+
+.header_text h1 {
+    font-size: 50px;
+}
+
+
+.mid_wrapper {
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 3rem;
+    padding-left: 4rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.image_wrapper {
+    height: 550px;
+    width: 80%;
+    background-color: #C25757;
+}
+
+.image_wrapper img {
+    object-fit: cover;
+}
+
+.form_container {
+    position: absolute;
+    padding: 2rem;
+    bottom: -12%;
+    right: 20px;
+    width: 450px;
+    height: fit-content;
+    min-height: 300;
+    background-color: #f0e0d7;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.form_container h1 {
+    font-family: Baskervville, 'Times New Roman', Times, serif;
+    font-size: 26px;
+    font-weight: 200;
+    width: 100%;
+}
+
+.form_wrapper {
+    padding: 0.5rem;
+    padding-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input_wrapper {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f6ece7;
+}
+
+.input_wrapper input {
+    outline: none;
+    font-size: 15px;
+    border: none;
+    background-color: transparent;
+}
+
+.button_wrapper {
+    padding: 1.2rem;
+    background-color: #424242;
+    color: white;
+    font-family: Arimo, 'Times New Roman', Times, serif;
+    font-size: 13px;
+}
+
+.bottom_wrapper {
+    height: 60vh;
+    width: 100vw;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact_details_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.contact_inner_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.contact_inner_wrapper h2 {
+    font-family: Baskervville, 'Times New Roman', Times, serif;
+    font-size: 45px;
+    font-weight: 300;
+}
+
+.contact_inner_wrapper .contact_text p {
+    font-size: 15px;
+    text-align: center;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    .top_wrapper {
+        padding: 0.5rem;
+    }
+
+    .header_text .glitch {
+        font-size: 3em;
+    }
+
+    .mid_wrapper {
+        margin-bottom: 10rem;
+        padding-left: 0rem;
+    }
+
+    .image_wrapper {
+        width: 100%;
+    }
+
+    .form_container {
+        padding: 1.5rem;
+        top: 40%;
+        right: 10px;
+        width: 400px;
+        height: 270;
+    }
+
+    .contact_inner_wrapper h2 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    // .image_wrapper {
+    //     width: 98%;
+    //     height: 450px;
+    // }
+}
+
+@media screen and (max-width: 680px) {
+    
+    .header_text .glitch {
+        font-size: 2.7em;
+    }
+
+    .mid_wrapper {
+        justify-content: center;
+    }
+
+    .form_container {
+        padding: 1.5rem;
+        bottom: 0;
+        right: 1%;
+        width: 350px;
+        height: 230;
+        gap: 15px;
+    }
+
+    .form_container h1 {
+        font-size: 23px;
+    }
+
+    .input_wrapper {
+        padding: 0.6rem;
+    }
+    
+    .input_wrapper input {
+        font-size: 13px;
+    }
+
+    .button_wrapper {
+        padding: 0.9rem;
+        font-size: 12px;
+    }
+
+    .contact_inner_wrapper h2 {
+        font-size: 38px;
+    }
+
+    .contact_inner_wrapper .contact_text p {
+        font-size: 12px;
+    }
+    
+}
+
+
+@media screen and (max-width: 585px) {
+    
+    .header_text .glitch {
+        font-size: 2em;
+    }
+}
+
+
+
+@media screen and (max-width: 450px) {
+
+    .header_text .glitch{
+        text-align: center;
+        width: 100%;
+    }
+
+    .bottom_wrapper {
+        height: 100%;
+    }
+
+    .contact_details_wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .header_text .glitch {
+        font-size: 1.5em;
+    }
+
+    .mid_wrapper {
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0;
+    }
+
+    .image_wrapper {
+        height: 400px;
+    }
+
+    .form_container {
+        padding: 1.5rem;
+        width: 95%;
+        height: 230;
+        gap: 15px;
+        position: static;
+    }
+
+    .form_container h1 {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .button_wrapper {
+        padding: 0.7rem;
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,531 @@
+:root {
+	font-size: 16px;
+	/* Glitch variables */
+	--gap-horizontal: 20px;
+	--gap-vertical: 5px;
+	--time-anim: 1s;
+}
+
+
+
+
+.product {
+	height: 100%;
+	width: 95%;
+	display: flex;
+	cursor: pointer;
+	flex-direction: column;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	justify-content: center;
+}
+
+.product_details_wrapper {
+	position: absolute;
+	width: 100%;
+	height: max-content;
+	top: 55%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: rgba(210, 187, 239, 0.5);
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.5s ease-in-out;
+	flex-direction: column;
+	box-sizing: border-box;
+	gap: 0;
+	color: white;
+	padding: 5px;
+	padding-bottom: 10px;
+
+	transform: translateZ(40px) scale(0.8);
+}
+
+.product_details_wrapper h2 {
+	font-family: Baskervville, 'Times New Roman', Times, serif;
+	font-size: 26px;
+	font-weight: 200;
+	text-align: center;
+}
+
+.product_details_wrapper p {
+	font-size: 19px;
+	font-weight: bold;
+}
+
+.product:hover .product_details_wrapper {
+	opacity: 1;
+	top: 40%;
+}
+
+.product.fade-out-top {
+	-webkit-animation: fade-out-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: fade-out-top 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes fade-out-top {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	100% {
+		-webkit-transform: translateY(-50px);
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+}
+
+@keyframes fade-out-top {
+	0% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	100% {
+		-webkit-transform: translateY(-50px);
+		transform: translateY(-50px);
+		opacity: 0;
+	}
+}
+
+/* Product Image */
+.item {
+	aspect-ratio: 0.8;
+	cursor: pointer;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 100%;
+	perspective: 1000px;
+	position: relative;
+	margin: 0;
+	overflow: hidden;
+	height: 90%;
+	width: 90%;
+
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+}
+
+.demo-2 .item {
+	overflow: visible;
+}
+
+.demo-2 .item--oh {
+	overflow: hidden;
+}
+
+.item__img {
+	grid-area: 1 / 1 / -1 / -1;
+	position: relative;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.item:hover .item__img {
+	opacity: 1;
+}
+
+.glitch {
+	display: grid;
+	place-items: center;
+}
+
+.glitch__img {
+	grid-area: 1 / 1 / -1 / -1;
+	background-position: 50% 50%;
+	background-size: contain;
+	image-rendering: pixelated;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;
+	transform: translate3d(0, 0, 0);
+	background-blend-mode: none;
+}
+
+.glitch__img:nth-child(2) {
+	background-color: #f3727e;
+	background-blend-mode: color-dodge;
+}
+
+.glitch__img:nth-child(3) {
+	background-color: #3124c7;
+	background-blend-mode: luminosity;
+}
+
+.glitch__img:nth-child(4) {
+	background-color: #3124c7;
+	background-blend-mode: none;
+}
+
+.glitch__img:nth-child(5) {
+	background-blend-mode: none;
+}
+
+/* Hide all images except the first one */
+.glitch__img:nth-child(n+2) {
+	opacity: 0;
+}
+
+/* Hovers */
+
+/* On hover we show the 2nd, 3rd, 4th and 5th image*/
+.item:hover .glitch__img:nth-child(n+2) {
+	opacity: 1;
+}
+
+/* Hover animations for horizontal case */
+.item:hover .glitch__img:nth-child(2) {
+	transform: translate3d(var(--gap-horizontal), 0, 0);
+	animation: glitch-anim-1-horizontal var(--time-anim) infinite linear alternate;
+}
+
+.item:hover .glitch__img:nth-child(3) {
+	transform: translate3d(calc(-1 * var(--gap-horizontal)), 0, 0);
+	animation: glitch-anim-2-horizontal var(--time-anim) infinite linear alternate;
+}
+
+.item:hover .glitch__img:nth-child(4) {
+	transform: translate3d(0, calc(-1 * var(--gap-vertical)), 0) scale3d(-1, -1, 1);
+	animation: glitch-anim-3-horizontal var(--time-anim) infinite linear alternate;
+}
+
+/* Hover flash animation on last image */
+.item:hover .glitch__img:nth-child(5) {
+	animation: glitch-anim-flash 0.5s steps(1, end) infinite;
+}
+
+/* Animations */
+
+/* Horizontal */
+@keyframes glitch-anim-1-horizontal {
+	0% {
+		-webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+		clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+	}
+
+	10% {
+		-webkit-clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+		clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+	}
+
+	20% {
+		-webkit-clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+		clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+	}
+
+	30% {
+		-webkit-clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+		clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+	}
+
+	40% {
+		-webkit-clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+		clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+	}
+
+	50% {
+		-webkit-clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+		clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+	}
+
+	60% {
+		-webkit-clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+		clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+	}
+
+	70% {
+		-webkit-clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+		clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+	}
+
+	80% {
+		-webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+		clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+	}
+
+	90% {
+		-webkit-clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+		clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+	}
+
+	100% {
+		-webkit-clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+		clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+	}
+}
+
+@keyframes glitch-anim-2-horizontal {
+	0% {
+		-webkit-clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
+		clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
+	}
+
+	15% {
+		-webkit-clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
+		clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
+	}
+
+	22% {
+		-webkit-clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%);
+		clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%);
+	}
+
+	31% {
+		-webkit-clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
+		clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
+	}
+
+	45% {
+		-webkit-clip-path: polygon(0 40%, 100% 40%, 100% 40%, 0 40%);
+		clip-path: polygon(0 40%, 100% 40%, 100% 40%, 0 40%);
+	}
+
+	51% {
+		-webkit-clip-path: polygon(0 52%, 100% 52%, 100% 59%, 0 59%);
+		clip-path: polygon(0 52%, 100% 52%, 100% 59%, 0 59%);
+	}
+
+	63% {
+		-webkit-clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+		clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+	}
+
+	76% {
+		-webkit-clip-path: polygon(0 75%, 100% 75%, 100% 75%, 0 75%);
+		clip-path: polygon(0 75%, 100% 75%, 100% 75%, 0 75%);
+	}
+
+	81% {
+		-webkit-clip-path: polygon(0 65%, 100% 65%, 100% 40%, 0 40%);
+		clip-path: polygon(0 65%, 100% 65%, 100% 40%, 0 40%);
+	}
+
+	94% {
+		-webkit-clip-path: polygon(0 45%, 100% 45%, 100% 50%, 0 50%);
+		clip-path: polygon(0 45%, 100% 45%, 100% 50%, 0 50%);
+	}
+
+	100% {
+		-webkit-clip-path: polygon(0 14%, 100% 14%, 100% 33%, 0 33%);
+		clip-path: polygon(0 14%, 100% 14%, 100% 33%, 0 33%);
+	}
+}
+
+@keyframes glitch-anim-3-horizontal {
+	0% {
+		-webkit-clip-path: polygon(0 1%, 100% 1%, 100% 3%, 0 3%);
+		clip-path: polygon(0 1%, 100% 1%, 100% 3%, 0 3%);
+	}
+
+	5% {
+		-webkit-clip-path: polygon(0 10%, 100% 10%, 100% 9%, 0 9%);
+		clip-path: polygon(0 10%, 100% 10%, 100% 9%, 0 9%);
+	}
+
+	10% {
+		-webkit-clip-path: polygon(0 5%, 100% 5%, 100% 6%, 0 6%);
+		clip-path: polygon(0 5%, 100% 5%, 100% 6%, 0 6%);
+	}
+
+	25% {
+		-webkit-clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
+		clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
+	}
+
+	27% {
+		-webkit-clip-path: polygon(0 10%, 100% 10%, 100% 10%, 0 10%);
+		clip-path: polygon(0 10%, 100% 10%, 100% 10%, 0 10%);
+	}
+
+	30% {
+		-webkit-clip-path: polygon(0 30%, 100% 30%, 100% 25%, 0 25%);
+		clip-path: polygon(0 30%, 100% 30%, 100% 25%, 0 25%);
+	}
+
+	33% {
+		-webkit-clip-path: polygon(0 15%, 100% 15%, 100% 16%, 0 16%);
+		clip-path: polygon(0 15%, 100% 15%, 100% 16%, 0 16%);
+	}
+
+	37% {
+		-webkit-clip-path: polygon(0 40%, 100% 40%, 100% 39%, 0 39%);
+		clip-path: polygon(0 40%, 100% 40%, 100% 39%, 0 39%);
+	}
+
+	40% {
+		-webkit-clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
+		clip-path: polygon(0 20%, 100% 20%, 100% 21%, 0 21%);
+	}
+
+	45% {
+		-webkit-clip-path: polygon(0 60%, 100% 60%, 100% 55%, 0 55%);
+		clip-path: polygon(0 60%, 100% 60%, 100% 55%, 0 55%);
+	}
+
+	50% {
+		-webkit-clip-path: polygon(0 30%, 100% 30%, 100% 31%, 0 31%);
+		clip-path: polygon(0 30%, 100% 30%, 100% 31%, 0 31%);
+	}
+
+	53% {
+		-webkit-clip-path: polygon(0 70%, 100% 70%, 100% 69%, 0 69%);
+		clip-path: polygon(0 70%, 100% 70%, 100% 69%, 0 69%);
+	}
+
+	57% {
+		-webkit-clip-path: polygon(0 40%, 100% 40%, 100% 41%, 0 41%);
+		clip-path: polygon(0 40%, 100% 40%, 100% 41%, 0 41%);
+	}
+
+	60% {
+		-webkit-clip-path: polygon(0 80%, 100% 80%, 100% 75%, 0 75%);
+		clip-path: polygon(0 80%, 100% 80%, 100% 75%, 0 75%);
+	}
+
+	65% {
+		-webkit-clip-path: polygon(0 50%, 100% 50%, 100% 51%, 0 51%);
+		clip-path: polygon(0 50%, 100% 50%, 100% 51%, 0 51%);
+	}
+
+	70% {
+		-webkit-clip-path: polygon(0 90%, 100% 90%, 100% 90%, 0 90%);
+		clip-path: polygon(0 90%, 100% 90%, 100% 90%, 0 90%);
+	}
+
+	73% {
+		-webkit-clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+		clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+	}
+
+	80% {
+		-webkit-clip-path: polygon(0 100%, 100% 100%, 100% 99%, 0 99%);
+		clip-path: polygon(0 100%, 100% 100%, 100% 99%, 0 99%);
+	}
+
+	100% {
+		-webkit-clip-path: polygon(0 70%, 100% 70%, 100% 71%, 0 71%);
+		clip-path: polygon(0 70%, 100% 70%, 100% 71%, 0 71%);
+	}
+}
+
+
+/* Flash */
+@keyframes glitch-anim-flash {
+	0% {
+		opacity: 0.2;
+		transform: translate3d(var(--gap-horizontal), var(--gap-vertical), 0);
+	}
+
+	33%,
+	100% {
+		opacity: 0;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.item__cover {
+	grid-area: 1 / 1 / -1 / -1;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	position: relative;
+	transition: opacity 0.25s ease-out;
+	pointer-events: none;
+}
+
+.item__cover::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.item:hover .item__cover {
+	opacity: 0;
+	transition: opacity 0.25s ease-out;
+}
+
+
+.box_underline {
+	position: absolute;
+	height: 4px;
+	width: 85%;
+	background-color: rgba(210, 187, 239, 0.678);
+	top: 100%;
+	align-self: center;
+	justify-self: center;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		text-align: center;
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+		grid-template-areas: 'title sponsor' 'demos demos';
+		grid-row-gap: 1rem;
+		align-content: space-between;
+	}
+
+	.frame__title {
+		grid-area: title;
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: auto auto 1fr;
+		align-items: start;
+		justify-items: flex-start;
+	}
+
+	.frame__demos {
+		grid-area: demos;
+		justify-self: end;
+	}
+
+	.frame__demo {
+		margin: 0 0 0 1rem;
+	}
+
+	.intro {
+		display: grid;
+		grid-column-gap: 1rem;
+		grid-template-areas: 'title desc'
+			'title button';
+		justify-content: space-between;
+		align-items: start;
+		text-align: right;
+	}
+}
+
+
+@media screen and (max-width: 768px) {
+
+	.product_details_wrapper h2 {
+		font-size: 20px;
+	}
+
+	.product_details_wrapper p {
+		font-size: 17px;
+	}
+
+}
+
+
+@media (max-width: 320px) {
+	.product_img {
+		width: 100%;
+	}
+
+	.product_details_wrapper h2 {
+		font-size: 17px;
+	}
+
+	.product_details_wrapper p {
+		font-size: 14px;
+	}
+}

@@ -1,0 +1,299 @@
+.footer {
+    height: max-content;
+    min-height: 300px;
+    width: 100vw;
+    overflow-x: hidden;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border-top: 1px dashed rgb(173, 173, 173);
+}
+
+.footer_top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.icon_wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.icon_wrapper img {
+    width: 90px;
+    height: 90px;
+}
+
+.icon_wrapper p {
+    width: 220px;
+}
+
+.icon_wrapper span {
+    font-weight: bold;
+}
+
+
+.footer_bottom {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px dashed rgb(173, 173, 173);
+}
+
+.footer_bottom h1 {
+    font-size: 36px
+}
+
+.footer_bottom-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+    width: max-content;
+    flex: 1.5;
+    box-sizing: border-box;
+}
+
+
+.footer_bottom-left .form_wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+}
+
+.form_wrapper .form_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form_top input {
+    border: none;
+    padding: 5px;
+    font-size: 17px;
+    margin-top: 2px;
+    outline: none;
+}
+
+.form_top input:focus {
+    border-bottom: 1px solid black;
+}
+
+.form_top .further {
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
+
+.form_top input {
+    border: none;
+    padding: 5px;
+    font-size: 17px;
+    margin-top: 2px;
+    outline: none;
+}
+
+
+.form_wrapper hr {
+    width: 100%;
+    background-color: none;
+    border: 0.5px solid rgb(145, 145, 145);
+}
+
+.form_wrapper hr.absolute {
+    position: absolute;
+    border: 0.5px solid white;
+    background-color: white;
+    bottom: 0;
+    width: 0px;
+    transition: all 0.4s ease-in-out;
+    align-self: flex-start;
+}
+
+.form_wrapper hr.absolute.visible {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border: 0.5px solid rgb(24, 24, 24);
+    background-color: rgb(24, 24, 24);
+}
+
+
+.footer_bottom-right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10rem;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.footer_bottom-right .socials {
+    padding-left: 15px;
+    padding-top: -15px;
+    color: rgb(77, 77, 77);
+    font-weight: 500;
+}
+
+.footer_bottom-right .socials p {
+    cursor: pointer;
+    width: max-content;
+}
+
+
+
+@media (max-width: 854px) {
+    .footer_bottom-left {
+        flex: 2;
+        padding-right: 4rem;
+    }
+
+    .footer_bottom-right {
+        padding: 0;
+        align-items: center;
+    }
+
+    .footer_bottom-right h1 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 643px) {
+    .footer_bottom-left {
+        flex: 2;
+        padding-right: 2rem;
+    }
+
+    .footer_bottom h1 {
+        font-size: 30px;
+    }
+
+}
+
+@media (max-width: 585px) {
+    .footer_top {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .icon_wrapper img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .footer_bottom {
+        flex-direction: column;
+    }
+
+    .footer_bottom-right {
+        width: 100%;
+        align-items: flex-start;
+        padding-left: 1rem;
+    }
+
+    .form_top input {
+        font-size: 15px;
+        width: 70%;
+    }
+}
+
+@media (max-width: 475px) {
+    .footer_bottom-left {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .form_top .further {
+        font-size: 15px;
+    }
+
+    .form_top input {
+        font-size: 15px;
+        width: 60%;
+    }
+
+    .footer_bottom h1 {
+        font-size: 25px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media (max-width: 1024px) {
+    
+}
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 585px) {
+    
+}
+
+@media (max-width: 425px) {
+    
+} */

@@ -1,0 +1,70 @@
+.fetch_error_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.fetch_error_wrapper svg {
+    transform: scale(1.85);
+}
+
+/* SVG */
+
+#right__hand {
+    animation: rotate-hand 1s linear 0s infinite alternate-reverse;
+    transform-origin: bottom;
+}
+
+@keyframes rotate-hand {
+    to {
+        transform: rotateZ(-5deg);
+    }
+}
+
+
+#head_sparks {
+    animation: move-sparks 0.2s linear 0s infinite alternate-reverse;
+    transform-origin: center;
+}
+
+@keyframes move-sparks {
+    to {
+        transform: scale(1.1)
+    }
+}
+
+
+
+
+@media (max-width: 585px) {
+
+    .fetch_error_wrapper svg {
+        transform: scale(1.7);
+    }
+}
+
+
+@media (max-width: 475px) {
+
+    .fetch_error_wrapper svg {
+        transform: scale(1.4);
+    }
+}
+
+
+@media (max-width: 320px) {
+
+    .fetch_error_wrapper svg {
+        transform: scale(1.4);
+    }
+
+    .fetch_error_wrapper svg {
+        transform: scale(1);
+        width: 100%;
+    }
+
+}

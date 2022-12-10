@@ -1,0 +1,11 @@
+.placeholder {
+    width: 100vw;
+    height: 70px;
+    display: none;
+}
+
+@media screen and (max-width: 450px) {
+    .placeholder {
+        /* display: flex; */
+    }
+}
